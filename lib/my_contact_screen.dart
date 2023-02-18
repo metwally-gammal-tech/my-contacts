@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_contacts/widgets/contacts_grid.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'widgets/socialmedia_platform.dart';
 
 class MyContactScreen extends StatelessWidget {
   final Uri phoneNumber = Uri.parse('tel:+201288220410');
@@ -76,24 +76,7 @@ class MyContactScreen extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                GridView.builder(
-                  itemCount: 6,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 20,
-                    crossAxisSpacing: 10,
-                  ),
-                  itemBuilder: (BuildContext context, index) {
-                    return ContactChanelCard(
-                      platform: myContacts.keys.toList()[index],
-                      url: myContacts.values.toList()[index],
-                    );
-                  },
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  primary: false,
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                ),
+                ContactsGrid(myContacts: myContacts),
               ]),
             ),
           ),
